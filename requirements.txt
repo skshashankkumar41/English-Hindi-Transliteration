@@ -7,3 +7,4 @@ tqdm==4.64.0
 openpyxl
 spacy==3.3.0
 Flask-Cors==3.0.10
+

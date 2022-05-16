@@ -59,7 +59,7 @@ decoder_net = Decoder(
 
 model = Seq2Seq(encoder_net, decoder_net, trainDataset.hin_vocab, device).to(device)
 
-checkpoint = torch.load("output/my_checkpoint.pth")
+checkpoint = torch.load("output/my_checkpoint.pth", map_location=device)
 
 model.load_state_dict(checkpoint['state_dict'])
 

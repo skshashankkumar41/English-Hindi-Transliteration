@@ -1,7 +1,7 @@
 Flask==2.1.1
 numpy==1.21.2
 # torch==1.7.1  -f https://download.pytorch.org/whl/torch_stable.html
-torch==1.7.1
+torch
 pandas==1.2.0
 tqdm==4.64.0
 openpyxl

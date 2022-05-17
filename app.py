@@ -1,12 +1,8 @@
 from flask import Flask, request, jsonify, render_template
 import torch 
-import torch.nn as nn
-import torch.optim as optim 
 from model import Encoder, Decoder, Seq2Seq
 from utils import translate_sentence, bleu, save_checkpoint, load_checkpoint
-from tqdm import tqdm 
 from dataloader import get_loader
-from dataset import TranslateDataset
 from flask_cors import CORS, cross_origin
 
 app = Flask(__name__)
@@ -34,13 +30,13 @@ device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 input_size_encoder = len(trainDataset.eng_vocab)
 input_size_decoder = len(trainDataset.hin_vocab)
 output_size = len(trainDataset.hin_vocab)
-encoder_embedding_size = 300
-decoder_embedding_size = 300
+encoder_embedding_size = 200
+decoder_embedding_size = 200
 
-hidden_size = 512
+hidden_size = 256
 num_layers = 1
-enc_dropout = 0.5
-dec_dropout = 0.5
+enc_dropout = 0.4
+dec_dropout = 0.4
 
 step = 0 
 
@@ -74,5 +70,5 @@ def results():
 
 if __name__ == '__main__':
     # Threaded option to enable multiple instances for multiple user access support
-    # app.run(debug=False)
-    app.run(threaded=True, port=5000)
+    app.run(debug=False)
+    # app.run(threaded=True, port=5000)
